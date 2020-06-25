@@ -146,7 +146,7 @@
       <div class="item">
         <div>支付方式</div>
         <div class="list">
-          <div
+          <!-- <div
             class="payItem acea-row row-middle"
             :class="active === 'weixin' ? 'on' : ''"
             @click="payItem('weixin')"
@@ -160,8 +160,8 @@
               微信支付
             </div>
             <div class="tip">微信快捷支付</div>
-          </div>
-          <div
+          </div> -->
+          <!-- <div
             class="payItem acea-row row-middle"
             :class="active === 'weixin' ? 'on' : ''"
             @click="payItem('weixin')"
@@ -175,8 +175,8 @@
               微信支付
             </div>
             <div class="tip">微信快捷支付</div>
-          </div>
-          <div
+          </div> -->
+          <!-- <div
             class="payItem acea-row row-middle"
             :class="active === 'yue' ? 'on' : ''"
             @click="payItem('yue')"
@@ -189,8 +189,8 @@
               余额支付
             </div>
             <div class="tip">可用余额：{{ userInfo.now_money || 0 }}</div>
-          </div>
-          <div
+          </div> -->
+          <!-- <div
             class="payItem acea-row row-middle"
             :class="active === 'offline' ? 'on' : ''"
             @click="payItem('offline')"
@@ -204,6 +204,19 @@
               线下支付
             </div>
             <div class="tip">线下方便支付</div>
+          </div> -->
+          <div
+            class="payItem acea-row row-middle"
+            :class="active === 'cod' ? 'on' : ''"
+            @click="payItem('cod')"
+          >
+            <div class="name acea-row row-center-wrapper">
+              <div
+                class="iconfont icon-yinhangqia"
+                :class="active === 'offline' ? 'bounceIn' : ''"
+              ></div>
+              货到付款
+            </div>
           </div>
         </div>
       </div>
@@ -376,7 +389,8 @@ export default {
       deduction: true,
       isWeixin: _isWeixin,
       pinkId: 0,
-      active: _isWeixin ? "weixin" : "yue",
+      // active: _isWeixin ? "weixin" : "yue",
+      active: "cod",
       showCoupon: false,
       showAddress: false,
       addressInfo: {},
@@ -511,12 +525,6 @@ export default {
           this.shipping_type
         )
           return this.$dialog.toast({ mes: "请填写联系人或联系人电话" });
-        if (!/^1(3|4|5|7|8|9|6)\d{9}$/.test(this.contactsTel)) {
-          return this.$dialog.toast({ mes: "请填写正确的手机号" });
-        }
-        if (!/^[\u4e00-\u9fa5\w]{2,16}$/.test(this.contacts)) {
-          return this.$dialog.toast({ mes: "请填写您的真实姓名" });
-        }
       }
       this.$dialog.loading.open("生成订单中");
       createOrder(this.orderGroupInfo.orderKey, {

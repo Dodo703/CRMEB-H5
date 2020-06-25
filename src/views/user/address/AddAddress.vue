@@ -20,27 +20,6 @@
         />
       </div>
       <div class="item acea-row row-between-wrapper">
-        <div class="name">所在地区</div>
-        <div
-          class="picker acea-row row-between-wrapper select-value form-control"
-        >
-          <div class="address">
-            <div slot="right" @click.stop="show2 = true">
-              {{ model2 || "请选择收货地址" }}
-            </div>
-            <CitySelect
-              v-model="show2"
-              :callback="result2"
-              :items="district"
-              provance=""
-              city=""
-              area=""
-            ></CitySelect>
-          </div>
-          <div class="iconfont icon-dizhi font-color-red"></div>
-        </div>
-      </div>
-      <div class="item acea-row row-between-wrapper">
         <div class="name">详细地址</div>
         <input
           type="text"
@@ -73,26 +52,20 @@
   </div>
 </template>
 <script type="text/babel">
-import { CitySelect } from "vue-ydui/dist/lib.rem/cityselect";
 import District from "ydui-district/dist/jd_province_city_area_id";
 import { getAddress, postAddress } from "@api/user";
-import attrs, { required, chs_phone } from "@utils/validate";
+import { required } from "@utils/validate";
 import { validatorDefaultCatch } from "@utils/dialog";
 import { openAddress } from "@libs/wechat";
 import { isWeixin } from "@utils";
 
 export default {
-  components: {
-    CitySelect
-  },
   data() {
     return {
       show2: false,
-      model2: "",
       district: District,
       id: 0,
       userAddress: { is_default: 0 },
-      address: {},
       isWechat: isWeixin()
     };
   },
@@ -108,11 +81,6 @@ export default {
       let that = this;
       getAddress(that.id).then(res => {
         that.userAddress = res.data;
-        that.model2 =
-          res.data.province + " " + res.data.city + " " + res.data.district;
-        that.address.province = res.data.province;
-        that.address.city = res.data.city;
-        that.address.district = res.data.district;
       });
     },
     getAddress() {
@@ -122,11 +90,6 @@ export default {
           id: this.id,
           real_name: userInfo.userName,
           phone: userInfo.telNumber,
-          address: {
-            province: userInfo.provinceName,
-            city: userInfo.cityName,
-            district: userInfo.countryName
-          },
           detail: userInfo.detailInfo,
           is_default: 1,
           post_code: userInfo.postalCode
@@ -145,22 +108,14 @@ export default {
     async submit() {
       let name = this.userAddress.real_name,
         phone = this.userAddress.phone,
-        model2 = this.model2,
         detail = this.userAddress.detail,
         isDefault = this.userAddress.is_default;
       try {
         await this.$validator({
-          name: [
-            required(required.message("姓名")),
-            attrs.range([2, 16], attrs.range.message("姓名"))
-          ],
-          phone: [
-            required(required.message("联系电话")),
-            chs_phone(chs_phone.message())
-          ],
-          model2: [required("请选择地址")],
+          name: [required(required.message("姓名"))],
+          phone: [required(required.message("联系电话"))],
           detail: [required(required.message("具体地址"))]
-        }).validate({ name, phone, model2, detail });
+        }).validate({ name, phone, detail });
       } catch (e) {
         return validatorDefaultCatch(e);
       }
@@ -170,7 +125,6 @@ export default {
             id: that.id,
             real_name: name,
             phone: phone,
-            address: this.address,
             detail: detail,
             is_default: isDefault,
             post_code: ""
@@ -186,12 +140,6 @@ export default {
     },
     ChangeIsDefault: function() {
       this.userAddress.is_default = !this.userAddress.is_default;
-    },
-    result2(ret) {
-      this.model2 = ret.itemName1 + " " + ret.itemName2 + " " + ret.itemName3;
-      this.address.province = ret.itemName1;
-      this.address.city = ret.itemName2;
-      this.address.district = ret.itemName3;
     }
   }
 };
