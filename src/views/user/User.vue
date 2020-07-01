@@ -25,7 +25,7 @@
       ></span>
     </div>
     <div class="wrapper">
-      <div class="nav acea-row row-middle">
+      <!-- <div class="nav acea-row row-middle">
         <router-link :to="{ path: '/user/account' }" class="item">
           <div>我的余额</div>
           <div class="num">{{ userInfo.now_money || 0 }}</div>
@@ -46,7 +46,7 @@
           <div>优惠券</div>
           <div class="num">{{ userInfo.couponCount || 0 }}</div>
         </router-link>
-      </div>
+      </div> -->
       <div class="myOrder">
         <div class="title acea-row row-between-wrapper">
           <div>我的订单</div>
@@ -112,7 +112,7 @@
           </router-link>
         </div>
       </div>
-      <div class="myService">
+      <!-- <div class="myService">
         <div class="title acea-row row-middle">我的服务</div>
         <div class="serviceList acea-row row-middle">
           <template v-for="(item, index) in MyMenus">
@@ -128,16 +128,8 @@
               <div>{{ item.name }}</div>
             </div>
           </template>
-          <!--<div-->
-          <!--class="item"-->
-          <!--@click="changeswitch(true)"-->
-          <!--v-if="userInfo.phone && isWeixin"-->
-          <!--&gt;-->
-          <!--<div class="pictrue"><img src="@assets/images/switch.png" /></div>-->
-          <!--<div>账号切换</div>-->
-          <!--</div>-->
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="footer-line-height"></div>
     <SwitchWindow

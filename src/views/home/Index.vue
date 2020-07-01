@@ -19,7 +19,7 @@
         <div class="swiper-pagination paginationBanner" slot="pagination"></div>
       </swiper>
     </div>
-    <div class="nav acea-row">
+    <!-- <div class="nav acea-row">
       <router-link
         :to="item.wap_url ? item.wap_url : ''"
         class="item"
@@ -29,8 +29,8 @@
         <div class="pictrue"><img :src="item.pic" /></div>
         <div>{{ item.name }}</div>
       </router-link>
-    </div>
-    <div class="news acea-row row-between-wrapper">
+    </div> -->
+    <!-- <div class="news acea-row row-between-wrapper">
       <div class="pictrue"><img src="@assets/images/news.png" /></div>
       <div class="swiper-no-swiping new-banner">
         <swiper
@@ -56,8 +56,8 @@
           </swiper-slide>
         </swiper>
       </div>
-    </div>
-    <div
+    </div> -->
+    <!-- <div
       class="specialArea acea-row row-between-wrapper"
       v-if="activityOne.wap_link !== undefined || activity.length"
     >
@@ -86,7 +86,7 @@
           </div>
         </router-link>
       </div>
-    </div>
+    </div> -->
     <div class="wrapper" v-if="info.fastList.length > 0">
       <div class="title acea-row row-between-wrapper">
         <div class="text">
