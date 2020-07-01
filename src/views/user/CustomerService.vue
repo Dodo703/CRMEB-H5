@@ -532,6 +532,7 @@ export default {
 
 .broadcast-details .footerCon {
   position: fixed;
+  max-width: 7.5rem;
   bottom: 0;
   left: 0;
   min-height: 1rem;

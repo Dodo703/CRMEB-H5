@@ -209,6 +209,7 @@
 <style scoped>
 .geoPage {
   position: fixed;
+  max-width: 7.5rem;
   width: 100%;
   height: 100%;
   top: 0;
@@ -340,6 +341,7 @@
   height: 1.7rem;
   background-color: #fff;
   position: fixed;
+  max-width: 7.5rem;
   left: 0;
   bottom: 0;
   z-index: 99;

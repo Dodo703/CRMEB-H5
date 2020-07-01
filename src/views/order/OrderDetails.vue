@@ -385,6 +385,7 @@
 <style scoped>
 .geoPage {
   position: fixed;
+  max-width: 7.5rem;
   width: 100%;
   height: 100%;
   top: 0;

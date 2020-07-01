@@ -96,8 +96,11 @@ export default {
 }
 
 .router {
-  position: absolute;
+  position: relative;
   width: 100%;
+  max-width: 7.5rem;
+  margin: 0 auto;
+  box-shadow: 0 0 0.3rem #eae8e8;
 }
 
 .fold-left-enter-active {

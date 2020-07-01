@@ -36,6 +36,7 @@ export default {
 <style scoped>
 .lottie-bg {
   position: fixed;
+  max-width: 100%;
   left: 0;
   top: 0;
   background-color: #fff;
@@ -51,7 +52,7 @@ export default {
 }
 
 #lottie {
-  width: 35%;
+  width: 2.7rem;
   display: block;
   overflow: hidden;
   transform: translate3d(0, 0, 0);

@@ -101,8 +101,11 @@ export default {
 <style scoped>
 .payment {
   position: fixed;
+  max-width: 7.5rem;
+  margin: 0 auto;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
   border-radius: 0.16rem 0.16rem 0 0;
   background-color: #fff;

@@ -208,6 +208,15 @@ const router = new Router({
       component: Loading
     },
     {
+      path: "/gif",
+      name: "Loading",
+      meta: {
+        title: " 加载中",
+        keepAlive: true
+      },
+      component: Loading
+    },
+    {
       path: "*",
       name: "NotDefined",
       meta: {
