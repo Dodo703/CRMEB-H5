@@ -10,19 +10,20 @@
               <img :src="userInfo.vip_icon" />{{ userInfo.vip_name }}
             </div>
           </div>
-          <router-link :to="'/user/data'" class="id" v-if="userInfo.phone">
+          <span class="id"> ID：{{ userInfo.uid || 0 }}</span>
+          <!-- <router-link :to="'/user/data'" class="id" v-if="userInfo.phone">
             ID：{{ userInfo.uid || 0
             }}<span class="iconfont icon-bianji1"></span>
           </router-link>
           <router-link :to="'/user/binding'" class="binding" v-else>
             <span>绑定手机号</span>
-          </router-link>
+          </router-link> -->
         </div>
       </div>
-      <span
+      <!-- <span
         class="iconfont icon-shezhi"
         @click="$router.push({ path: '/user/data' })"
-      ></span>
+      ></span> -->
     </div>
     <div class="wrapper">
       <!-- <div class="nav acea-row row-middle">
@@ -131,6 +132,13 @@
         </div>
       </div> -->
     </div>
+    <div
+      class="logOut cart-color acea-row row-center-wrapper"
+      @click="logout"
+      v-if="!isWeixin"
+    >
+      退出登录
+    </div>
     <div class="footer-line-height"></div>
     <SwitchWindow
       v-on:changeswitch="changeswitch"
@@ -140,9 +148,10 @@
   </div>
 </template>
 <script>
-import { getUser, getMenuUser } from "@api/user";
+import { getUser, getMenuUser, getLogout } from "@api/user";
 import { isWeixin } from "@utils";
 import SwitchWindow from "@components/SwitchWindow";
+import { clearAuthStatus } from "@libs/wechat";
 
 const NAME = "User";
 
@@ -199,6 +208,23 @@ export default {
       }
 
       this.$router.push({ path: this.MyMenus[index].wap_url });
+    },
+    logout: function() {
+      this.$dialog.confirm({
+        mes: "确认退出登录?",
+        opts: () => {
+          getLogout()
+            .then(res => {
+              this.$store.commit("LOGOUT");
+              clearAuthStatus();
+              location.href = location.origin;
+              console.log(res);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      });
     }
   }
 };

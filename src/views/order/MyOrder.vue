@@ -145,12 +145,17 @@
         </div>
         <div class="bottom acea-row row-right row-middle">
           <template v-if="order._status._type === 0">
-            <div class="bnt cancelBnt" @click="cancelOrder(order)">
+            <!-- <div class="bnt cancelBnt" @click="cancelOrder(order)">
               取消订单
-            </div>
-            <div class="bnt bg-color-red" @click="paymentTap(order)">
+            </div> -->
+            <!-- <div class="bnt bg-color-red" @click="paymentTap(order)">
               立即付款
-            </div>
+            </div> -->
+            <a href="tg://resolve?domain=@JieFuHuiZuoFan">
+              联系客服在线付款:<span class="money font-color-red"
+                >@JieFuHuiZuoFan</span
+              >
+            </a>
           </template>
           <template
             v-if="order._status._type === 1 || order._status._type === 9"

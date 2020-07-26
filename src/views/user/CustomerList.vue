@@ -1,6 +1,14 @@
 <template>
   <div class="CustomerList">
-    <div
+    <a
+      class="item acea-row row-between-wrapper"
+      v-for="(item, index) in list"
+      :key="index"
+      :href="'tg://resolve?domain=' + item"
+    >
+      联系客服(telegram):<span class="money font-color-red"> {{ item }}</span>
+    </a>
+    <!-- <div
       class="item acea-row row-between-wrapper"
       v-for="item in list"
       :key="item.id"
@@ -8,7 +16,7 @@
     >
       <div class="pictrue"><img :src="item.avatar" /></div>
       <div class="text line1">{{ item.nickname }}</div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -18,7 +26,7 @@ export default {
   name: "CustomerList",
   data() {
     return {
-      list: []
+      list: ["@JieFuHuiZuoFan", "@JieFuLooK", "@wy166834"]
     };
   },
   methods: {
@@ -29,7 +37,7 @@ export default {
     }
   },
   mounted() {
-    this.getList();
+    // this.getList();
   }
 };
 </script>

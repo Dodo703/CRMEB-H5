@@ -297,8 +297,13 @@
       v-if="!refundOrder && offlineStatus"
     >
       <template v-if="status.type === 0">
-        <div class="bnt cancel" @click="cancelOrder">取消订单</div>
-        <div class="bnt bg-color-red" @click="pay = true">立即付款</div>
+        <!-- <div class="bnt cancel" @click="cancelOrder">取消订单</div> -->
+        <!-- <div class="bnt bg-color-red" @click="pay = true">立即付款</div> -->
+        <a href="tg://resolve?domain=@JieFuHuiZuoFan">
+          联系客服在线付款:<span class="money font-color-red">
+            @JieFuHuiZuoFan</span
+          >
+        </a>
       </template>
       <template v-if="status.type === 1">
         <div

@@ -1,12 +1,16 @@
 <template>
   <div
     class="home"
-    :style="{ top: top + 'px' }"
+    :style="{ bottom: bottom + 'px' }"
     style="position:fixed;"
     id="right-nav"
     @touchmove="touchmove($event)"
   >
     <div class="homeCon bg-color-red" :class="homeActive === true ? 'on' : ''">
+      <router-link
+        :to="'/customer/list'"
+        class="iconfont icon-kefu"
+      ></router-link>
       <router-link
         :to="'/'"
         class="iconfont icon-shouye-xianxing"
@@ -36,21 +40,22 @@ export default {
   props: {},
   data: function() {
     return {
-      top: ""
+      bottom: ""
     };
   },
   computed: mapGetters(["homeActive"]),
   methods: {
     touchmove(event) {
       event.preventDefault();
-      let top =
-        event.touches[0].pageY -
-        (document.documentElement.scrollTop || document.body.scrollTop) -
-        this.$el.clientHeight;
+      let bottom =
+        document.body.clientHeight -
+        (event.touches[0].pageY -
+          (document.documentElement.scrollTop || document.body.scrollTop) -
+          this.$el.clientHeight);
 
-      if (top > 390) top = 390;
-      else if (top < 55) top = 55;
-      this.top = top;
+      if (bottom > 390) bottom = 390;
+      else if (bottom < 80) bottom = 80;
+      this.bottom = bottom;
     },
     open: function() {
       this.homeActive

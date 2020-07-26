@@ -11,12 +11,12 @@
           @click="addressType(0)"
           v-if="store_self_mention"
         ></div>
-        <div
+        <!-- <div
           class="item font-color-red"
           :class="shipping_type === 1 ? 'on' : 'on2'"
           @click="addressType(1)"
           v-if="store_self_mention"
-        ></div>
+        ></div> -->
       </div>
       <div
         class="address acea-row row-between-wrapper"
@@ -58,7 +58,7 @@
     </div>
     <OrderGoods :evaluate="0" :cartInfo="orderGroupInfo.cartInfo"></OrderGoods>
     <div class="wrapper">
-      <div
+      <!-- <div
         class="item acea-row row-between-wrapper"
         @click="couponTap"
         v-if="deduction === false"
@@ -133,7 +133,7 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="item">
         <div>备注信息</div>
         <textarea
@@ -142,11 +142,11 @@
         ></textarea>
       </div>
     </div>
-    <div class="wrapper">
+    <!-- <div class="wrapper">
       <div class="item">
         <div>支付方式</div>
         <div class="list">
-          <!-- <div
+          <div
             class="payItem acea-row row-middle"
             :class="active === 'weixin' ? 'on' : ''"
             @click="payItem('weixin')"
@@ -160,8 +160,8 @@
               微信支付
             </div>
             <div class="tip">微信快捷支付</div>
-          </div> -->
-          <!-- <div
+          </div>
+          <div
             class="payItem acea-row row-middle"
             :class="active === 'weixin' ? 'on' : ''"
             @click="payItem('weixin')"
@@ -175,8 +175,8 @@
               微信支付
             </div>
             <div class="tip">微信快捷支付</div>
-          </div> -->
-          <!-- <div
+          </div>
+          <div
             class="payItem acea-row row-middle"
             :class="active === 'yue' ? 'on' : ''"
             @click="payItem('yue')"
@@ -189,8 +189,8 @@
               余额支付
             </div>
             <div class="tip">可用余额：{{ userInfo.now_money || 0 }}</div>
-          </div> -->
-          <!-- <div
+          </div>
+          <div
             class="payItem acea-row row-middle"
             :class="active === 'offline' ? 'on' : ''"
             @click="payItem('offline')"
@@ -204,7 +204,20 @@
               线下支付
             </div>
             <div class="tip">线下方便支付</div>
-          </div> -->
+          </div>
+          <div
+            class="payItem acea-row row-middle"
+            :class="active === 'customer' ? 'on' : ''"
+            @click="payItem('customer')"
+          >
+            <div class="name acea-row row-center-wrapper">
+              <div
+                class="iconfont icon-yinhangqia"
+                :class="active === 'offline' ? 'bounceIn' : ''"
+              ></div>
+              联系客服进行支付宝或微信付款
+            </div>
+          </div>
           <div
             class="payItem acea-row row-middle"
             :class="active === 'cod' ? 'on' : ''"
@@ -220,7 +233,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="moneyList">
       <div
         class="item acea-row row-between-wrapper"
@@ -257,7 +270,7 @@
         合计:
         <span class="font-color-red">￥{{ orderPrice.pay_price }}</span>
       </div>
-      <div class="settlement" @click="createOrder">立即结算</div>
+      <div class="settlement" @click="createOrder">立即下单</div>
     </div>
     <CouponListWindow
       v-on:couponchange="changecoupon($event)"
@@ -458,7 +471,7 @@ export default {
         const data = res.data;
         if (data.status === "EXTEND_ORDER") {
           this.$router.replace({
-            path: "/order/detail/" + data.result.orderId
+            path: "/user"
           });
         } else {
           this.orderPrice = data.result;
@@ -516,7 +529,7 @@ export default {
     },
     createOrder() {
       let shipping_type = this.shipping_type;
-      if (!this.active) return this.$dialog.toast({ mes: "请选择支付方式" });
+      // if (!this.active) return this.$dialog.toast({ mes: "请选择支付方式" });
       if (!this.addressInfo.id && !this.shipping_type)
         return this.$dialog.toast({ mes: "请选择收货地址" });
       if (this.shipping_type) {
@@ -533,7 +546,7 @@ export default {
         addressId: this.addressInfo.id,
         useIntegral: this.useIntegral ? 1 : 0,
         couponId: this.usableCoupon.id || 0,
-        payType: this.active,
+        payType: "cod",
         pinkId: this.pinkId,
         seckill_id: this.orderGroupInfo.seckill_id,
         combinationId: this.orderGroupInfo.combination_id,
@@ -551,9 +564,10 @@ export default {
             case "EXTEND_ORDER":
             case "PAY_DEFICIENCY":
             case "PAY_ERROR":
-              this.$dialog.toast({ mes: res.msg });
+              // this.$dialog.toast({ mes: res.msg });
               this.$router.replace({
-                path: url + "/0?msg=" + res.msg
+                // path: url + "/0?msg=" + res.msg
+                path: "/user"
               });
               break;
             case "SUCCESS":
@@ -581,7 +595,11 @@ export default {
         .catch(err => {
           console.log(err);
           this.$dialog.loading.close();
-          this.$dialog.error(err.msg || "创建订单失败");
+          // this.$dialog.error(err.msg || "创建订单失败");
+          this.$dialog.success("下单成功");
+          this.$router.replace({
+            path: "/order/list/0"
+          });
         });
     }
   }
