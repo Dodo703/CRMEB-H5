@@ -60,7 +60,7 @@
               <div class="infor line1" v-if="item.productInfo.attrInfo">
                 属性：{{ item.productInfo.attrInfo.suk }}
               </div>
-              <div class="money">￥{{ item.truePrice }}</div>
+              <div class="money">₱{{ item.truePrice }}</div>
             </div>
             <div class="carnum acea-row row-center-wrapper">
               <div
@@ -172,7 +172,7 @@
         </div>
       </div>
       <div class="money acea-row row-middle" v-if="footerswitch === false">
-        <span class="font-color-red">￥{{ countmoney }}</span>
+        <span class="font-color-red">₱{{ countmoney }}</span>
         <div class="placeOrder bg-color-red" @click="placeOrder">立即下单</div>
       </div>
       <div class="button acea-row row-middle" v-else>

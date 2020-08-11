@@ -5,7 +5,7 @@
         <div>
           <div class="name">提现记录</div>
           <div class="money">
-            ￥<span class="num">{{ commission }}</span>
+            ₱<span class="num">{{ commission }}</span>
           </div>
         </div>
         <div class="iconfont icon-jinbi1"></div>

@@ -11,7 +11,7 @@
           {{ cart.productInfo.store_name }}
         </div>
         <div class="money">
-          <div>￥{{ cart.truePrice }}</div>
+          <div>₱{{ cart.truePrice }}</div>
           <div>x{{ cart.cart_num }}</div>
         </div>
       </div>

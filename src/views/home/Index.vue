@@ -186,7 +186,7 @@
           </div>
           <div class="name line1">{{ item.store_name }}</div>
           <div class="money font-color-red">
-            ￥<span class="num">{{ item.price }}</span>
+            ₱<span class="num">{{ item.price }}</span>
           </div>
         </router-link>
       </div>
@@ -220,7 +220,7 @@
                 <img :src="item.image" />
               </div>
               <div class="pro-info line1">{{ item.store_name }}</div>
-              <div class="money font-color-red">￥{{ item.price }}</div>
+              <div class="money font-color-red">₱{{ item.price }}</div>
             </router-link>
           </swiper-slide>
         </swiper>

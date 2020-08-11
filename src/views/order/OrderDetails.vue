@@ -271,23 +271,23 @@
     <div class="wrapper">
       <div class="item acea-row row-between">
         <div>支付金额：</div>
-        <div class="conter">￥{{ orderInfo.total_price }}</div>
+        <div class="conter">₱{{ orderInfo.total_price }}</div>
       </div>
       <div class="item acea-row row-between" v-if="orderInfo.coupon_price > 0">
         <div>优惠券抵扣：</div>
-        <div class="conter">-￥{{ orderInfo.coupon_price }}</div>
+        <div class="conter">-₱{{ orderInfo.coupon_price }}</div>
       </div>
       <div class="item acea-row row-between" v-if="orderInfo.use_integral > 0">
         <div>积分抵扣：</div>
-        <div class="conter">-￥{{ orderInfo.deduction_price }}</div>
+        <div class="conter">-₱{{ orderInfo.deduction_price }}</div>
       </div>
       <div class="item acea-row row-between" v-if="orderInfo.pay_postage > 0">
         <div>运费：</div>
-        <div class="conter">￥{{ orderInfo.pay_postage }}</div>
+        <div class="conter">₱{{ orderInfo.pay_postage }}</div>
       </div>
       <div class="actualPay acea-row row-right">
         实付款：<span class="money font-color-red"
-          >￥{{ orderInfo.pay_price }}</span
+          >₱{{ orderInfo.pay_price }}</span
         >
       </div>
     </div>

@@ -100,7 +100,7 @@
         "
       >
         会员优惠
-        <div class="discount">￥{{ orderGroupInfo.priceGroup.vipPrice }}</div>
+        <div class="discount">₱{{ orderGroupInfo.priceGroup.vipPrice }}</div>
       </div>
       <div class="item acea-row row-between-wrapper" v-if="shipping_type === 0">
         <div>快递费用</div>
@@ -240,35 +240,35 @@
         v-if="orderPrice.total_price !== undefined"
       >
         <div>商品总价：</div>
-        <div class="money">￥{{ orderPrice.total_price }}</div>
+        <div class="money">₱{{ orderPrice.total_price }}</div>
       </div>
       <div
         class="item acea-row row-between-wrapper"
         v-if="orderPrice.pay_postage > 0"
       >
         <div>运费：</div>
-        <div class="money">￥{{ orderPrice.pay_postage }}</div>
+        <div class="money">₱{{ orderPrice.pay_postage }}</div>
       </div>
       <div
         class="item acea-row row-between-wrapper"
         v-if="orderPrice.coupon_price > 0"
       >
         <div>优惠券抵扣：</div>
-        <div class="money">-￥{{ orderPrice.coupon_price }}</div>
+        <div class="money">-₱{{ orderPrice.coupon_price }}</div>
       </div>
       <div
         class="item acea-row row-between-wrapper"
         v-if="orderPrice.deduction_price > 0"
       >
         <div>积分抵扣：</div>
-        <div class="money">-￥{{ orderPrice.deduction_price }}</div>
+        <div class="money">-₱{{ orderPrice.deduction_price }}</div>
       </div>
     </div>
     <div style="height:1.2rem"></div>
     <div class="footer acea-row row-between-wrapper">
       <div>
         合计:
-        <span class="font-color-red">￥{{ orderPrice.pay_price }}</span>
+        <span class="font-color-red">₱{{ orderPrice.pay_price }}</span>
       </div>
       <div class="settlement" @click="createOrder">立即下单</div>
     </div>

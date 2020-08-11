@@ -5,7 +5,7 @@
         <div class="text">
           <div class="name">订单信息</div>
           <div>
-            累计订单：{{ orderData.order_count || 0 }} 总消费：￥{{
+            累计订单：{{ orderData.order_count || 0 }} 总消费：₱{{
               orderData.sum_price || 0
             }}
           </div>
@@ -128,7 +128,7 @@
               </div>
               <div class="money">
                 <div>
-                  ￥{{
+                  ₱{{
                     cart.productInfo.attrInfo
                       ? cart.productInfo.attrInfo.price
                       : cart.productInfo.price
@@ -141,7 +141,7 @@
         </div>
         <div class="totalPrice">
           共{{ order.cartInfo.length || 0 }}件商品，总金额
-          <span class="money font-color-red">￥{{ order.pay_price }}</span>
+          <span class="money font-color-red">₱{{ order.pay_price }}</span>
         </div>
         <div class="bottom acea-row row-right row-middle">
           <template v-if="order._status._type === 0">

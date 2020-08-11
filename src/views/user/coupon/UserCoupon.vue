@@ -8,7 +8,7 @@
         :key="index"
       >
         <div class="money" :class="item._type === 0 ? 'moneyGray' : ''">
-          ￥<span class="num">{{ item.coupon_price }}</span>
+          ₱<span class="num">{{ item.coupon_price }}</span>
         </div>
         <div class="text">
           <div class="condition line1">{{ item.coupon_title }}</div>

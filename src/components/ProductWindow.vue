@@ -10,7 +10,7 @@
             {{ attr.productSelect.store_name }}
           </div>
           <div class="money font-color-red">
-            ￥<span class="num">{{ attr.productSelect.price }}</span
+            ₱<span class="num">{{ attr.productSelect.price }}</span
             ><span class="stock">库存: {{ attr.productSelect.stock }}</span>
           </div>
         </div>

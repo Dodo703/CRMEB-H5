@@ -29,7 +29,7 @@
               </div>
               <div class="money">
                 返佣：<span class="font-color-red"
-                  >￥{{ val.number ? val.number : 0 }}</span
+                  >₱{{ val.number ? val.number : 0 }}</span
                 >
               </div>
             </div>

@@ -43,7 +43,7 @@
               <div class="money">
                 限时价<span
                   class="num font-color-red"
-                  v-text="'￥' + itemSeckill.price"
+                  v-text="'₱' + itemSeckill.price"
                 ></span>
               </div>
               <div class="progress cart-color">

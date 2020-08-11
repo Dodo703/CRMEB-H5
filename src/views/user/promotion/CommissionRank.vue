@@ -37,7 +37,7 @@
             <div class="pictrue"><img :src="item.avatar" /></div>
             <div class="text line1">{{ item.nickname }}</div>
           </div>
-          <div class="people font-color-red">￥{{ item.brokerage_price }}</div>
+          <div class="people font-color-red">₱{{ item.brokerage_price }}</div>
         </div>
       </div>
     </div>

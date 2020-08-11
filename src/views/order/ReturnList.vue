@@ -34,12 +34,12 @@
             {{ cart.productInfo.attrInfo.suk }}
           </div>
           <div class="attr line1" v-else>{{ cart.productInfo.store_name }}</div>
-          <div class="money">￥{{ cart.productInfo.price }}</div>
+          <div class="money">₱{{ cart.productInfo.price }}</div>
         </div>
       </div>
       <div class="totalSum">
         共{{ order.cartInfo.length || 0 }}件商品，总金额
-        <span class="font-color-red price">￥{{ order.pay_price }}</span>
+        <span class="font-color-red price">₱{{ order.pay_price }}</span>
       </div>
     </div>
     <div class="noCart" v-if="orderList.length === 0 && page > 1">

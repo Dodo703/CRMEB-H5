@@ -12,7 +12,7 @@
         <div class="name line2">{{ cart.productInfo.store_name }}</div>
         <div class="money">
           <div>
-            ￥{{
+            ₱{{
               cart.productInfo.attrInfo
                 ? cart.productInfo.attrInfo.price
                 : cart.productInfo.price
@@ -29,7 +29,7 @@
       </div>
       <div class="item acea-row row-between-wrapper">
         <div>退款金额</div>
-        <div class="num">￥{{ orderInfo.pay_price }}</div>
+        <div class="num">₱{{ orderInfo.pay_price }}</div>
       </div>
       <div class="item acea-row row-between-wrapper">
         <div>退款原因</div>

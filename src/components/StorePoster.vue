@@ -10,7 +10,7 @@
         <img class="image" :src="posterData.image" alt="商品图片" />
         <div class="text black"><span v-text="posterData.title"></span></div>
         <div class="text rad">
-          <span v-text="'￥' + posterData.price"></span>
+          <span v-text="'₱' + posterData.price"></span>
         </div>
         <div class="code">
           <div class="code-img">

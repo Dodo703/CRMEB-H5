@@ -66,14 +66,14 @@
             class="money font-color-red"
             :class="Switch === true ? '' : 'on'"
           >
-            ￥<span class="num">{{ item.price }}</span>
+            ₱<span class="num">{{ item.price }}</span>
           </div>
           <div
             class="vip acea-row row-between-wrapper"
             :class="Switch === true ? '' : 'on'"
           >
             <div class="vip-money" v-if="item.vip_price && item.vip_price > 0">
-              ￥{{ item.vip_price }}<img src="@assets/images/vip.png" />
+              ₱{{ item.vip_price }}<img src="@assets/images/vip.png" />
             </div>
             <div>已售{{ item.sales }}件</div>
           </div>

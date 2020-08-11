@@ -14,14 +14,14 @@
       </div>
       <div class="info-wrapper">
         <div class="money">
-          <span>￥</span>
+          <span>₱</span>
           <input type="number" placeholder="0.00" v-model="money" />
         </div>
         <div class="tips" v-if="!active">
-          提示：当前余额为<span>￥{{ now_money || 0 }}</span>
+          提示：当前余额为<span>₱{{ now_money || 0 }}</span>
         </div>
         <div class="tips" v-else>
-          提示：当前佣金为<span>￥{{ userInfo.brokerage_price || 0 }}</span>
+          提示：当前佣金为<span>₱{{ userInfo.brokerage_price || 0 }}</span>
         </div>
         <div class="pay-btn bg-color-red" @click="recharge">
           {{ active ? "立即转入" : "立即充值" }}

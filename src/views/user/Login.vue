@@ -27,7 +27,7 @@
               </svg>
               <input
                 type="text"
-                placeholder="输入手机号码"
+                placeholder="输入用户名"
                 v-model="account"
                 required
               />

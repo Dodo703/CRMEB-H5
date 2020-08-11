@@ -9,7 +9,7 @@
           {{ orderCon.productInfo.store_name }}
         </div>
         <div class="money">
-          <div>￥{{ orderCon.productInfo.price }}</div>
+          <div>₱{{ orderCon.productInfo.price }}</div>
           <div class="num">x{{ orderCon.cart_num }}</div>
         </div>
       </div>

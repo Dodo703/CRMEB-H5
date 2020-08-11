@@ -11,7 +11,7 @@
         <div class="text acea-row row-column-between">
           <div class="infor line1">{{ item.store_name }}</div>
           <div class="acea-row row-between-wrapper">
-            <div class="money font-color-red">￥{{ item.price }}</div>
+            <div class="money font-color-red">₱{{ item.price }}</div>
             <div class="delete" @click.prevent="delCollection(index)">删除</div>
           </div>
         </div>

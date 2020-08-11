@@ -17,9 +17,9 @@
       <div class="text">
         <div class="name line1">{{ storeInfo.store_name }}</div>
         <div class="money font-color-red">
-          ￥<span class="num">{{ storeInfo.ot_price }}</span>
+          ₱<span class="num">{{ storeInfo.ot_price }}</span>
         </div>
-        <div class="y_money">￥{{ storeInfo.price }}</div>
+        <div class="y_money">₱{{ storeInfo.price }}</div>
       </div>
       <router-link :to="{ path: '/detail/' + storeInfo.id }">
         <div class="label"><span class="span">查看商品</span></div>
