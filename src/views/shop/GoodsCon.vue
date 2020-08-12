@@ -104,7 +104,7 @@
                   <div class="pictrue">
                     <img :src="val.image" />
                   </div>
-                  <div class="name line1">{{ val.store_name }}}</div>
+                  <div class="name line1">{{ val.store_name }}</div>
                   <div class="money font-color-red">¥{{ val.price }}</div>
                 </div>
               </div>

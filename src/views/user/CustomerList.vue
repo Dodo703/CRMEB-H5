@@ -1,13 +1,16 @@
 <template>
   <div class="CustomerList">
-    <a
+    <div
       class="item acea-row row-between-wrapper"
       v-for="(item, index) in list"
       :key="index"
-      :href="'tg://resolve?domain=' + item"
     >
-      联系客服(telegram):<span class="money font-color-red"> {{ item }}</span>
-    </a>
+      联系客服(telegram):
+      <a class="money font-color-red" :href="'tg://resolve?domain=' + item">
+        {{ item }}</a
+      >
+      <span class="copy" :data-clipboard-text="item"> 复制</span>
+    </div>
     <!-- <div
       class="item acea-row row-between-wrapper"
       v-for="item in list"
@@ -21,12 +24,13 @@
 </template>
 <script>
 import { serviceList } from "@api/user";
+import ClipboardJS from "clipboard";
 
 export default {
   name: "CustomerList",
   data() {
     return {
-      list: ["@JieFuHuiZuoFan", "@JieFuLooK", "@wy166834"]
+      list: ["@JieFuHuiZuoFan", "@luckywr", "@JieFuLooK", "@jsdodo"]
     };
   },
   methods: {
@@ -38,6 +42,13 @@ export default {
   },
   mounted() {
     // this.getList();
+    this.$nextTick(function() {
+      let copybtn = document.getElementsByClassName("copy");
+      const clipboard = new ClipboardJS(copybtn);
+      clipboard.on("success", () => {
+        this.$dialog.success("复制成功");
+      });
+    });
   }
 };
 </script>
@@ -69,5 +80,18 @@ export default {
   width: 5.82rem;
   font-size: 0.32rem;
   color: #000;
+}
+.money {
+  flex: 1;
+  text-align: right;
+}
+.copy {
+  font-size: 0.14rem;
+  border: 0.01rem solid #1d9cb1;
+  border-radius: 0.04rem;
+  color: #1d9cb1;
+  margin-left: 0.05rem;
+  padding: 0.03rem;
+  cursor: pointer;
 }
 </style>

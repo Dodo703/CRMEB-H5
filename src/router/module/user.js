@@ -227,8 +227,7 @@ export default [
     name: "CustomerList",
     meta: {
       title: "客服列表",
-      keepAlive: true,
-      auth: true
+      keepAlive: true
     },
     component: () => import("@views/user/CustomerList.vue")
   },
