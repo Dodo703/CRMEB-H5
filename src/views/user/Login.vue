@@ -105,6 +105,20 @@
             />
           </div>
         </div>
+        <div class="item" v-if="isShowCode">
+          <div class="align-left">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-code_"></use>
+            </svg>
+            <input
+              type="text"
+              placeholder="填写验证码"
+              class="codeIput"
+              v-model="codeVal"
+            />
+            <div class="code" @click="again"><img :src="codeUrl" /></div>
+          </div>
+        </div>
       </div>
       <div class="logon" @click="register">注册</div>
       <div class="tip">
@@ -117,12 +131,18 @@
 </template>
 <script>
 import sendVerifyCode from "@mixins/SendVerifyCode";
-import { login, loginMobile, registerVerify, register } from "@api/user";
-import { required, alpha_num, chs_phone } from "@utils/validate";
+import {
+  login,
+  loginMobile,
+  registerVerify,
+  register,
+  getCodeApi
+} from "@api/user";
+import attrs, { required, alpha_num, chs_phone } from "@utils/validate";
 import { validatorDefaultCatch } from "@utils/dialog";
 import { getLogo } from "@api/public";
-import dayjs from "dayjs";
 import cookie from "@utils/store/cookie";
+import { VUE_APP_API_URL } from "@utils";
 
 const BACK_URL = "login_back_url";
 
@@ -138,13 +158,35 @@ export default {
       captcha: "",
       formItem: 1,
       type: "login",
-      logoUrl: ""
+      logoUrl: "",
+      keyCode: "",
+      codeUrl: "",
+      codeVal: "",
+      isShowCode: false
     };
   },
   mounted: function() {
+    this.getCode();
     this.getLogoImage();
   },
   methods: {
+    again() {
+      this.codeUrl =
+        VUE_APP_API_URL +
+        "/sms_captcha?" +
+        "key=" +
+        this.keyCode +
+        Date.parse(new Date());
+    },
+    getCode() {
+      getCodeApi()
+        .then(res => {
+          this.keyCode = res.data.key;
+        })
+        .catch(res => {
+          this.$dialog.error(res.msg);
+        });
+    },
     async getLogoImage() {
       let that = this;
       getLogo(2).then(res => {
@@ -177,12 +219,15 @@ export default {
       })
         .then(res => {
           let data = res.data;
-          let newTime = Math.round(new Date() / 1000);
-          that.$store.commit(
-            "LOGIN",
-            data.token,
-            dayjs(data.expires_time) - newTime
-          );
+          let expires_time = data.expires_time.substring(0, 19);
+          expires_time = expires_time.replace(/-/g, "/");
+          expires_time = new Date(expires_time).getTime() - 28800000;
+          const datas = {
+            token: data.token,
+            expires_time: expires_time
+          };
+          that.$store.commit("LOGIN", datas);
+          // let newTime = Math.round(new Date() / 1000);
           const backUrl = cookie.get(BACK_URL) || "/";
           cookie.remove(BACK_URL);
           that.$router.replace({ path: backUrl });
@@ -244,12 +289,21 @@ export default {
         return validatorDefaultCatch(e);
       }
       if (that.formItem == 2) that.type = "register";
-      await registerVerify({ phone: that.account, type: that.type })
+      await registerVerify({
+        phone: that.account,
+        type: that.type,
+        key: that.keyCode,
+        code: that.codeVal
+      })
         .then(res => {
           that.$dialog.success(res.msg);
           that.sendCode();
         })
         .catch(res => {
+          if (res.data.status === 402) {
+            that.codeUrl = `${VUE_APP_API_URL}/sms_captcha?key=${that.keyCode}`;
+            that.isShowCode = true;
+          }
           that.$dialog.error(res.msg);
         });
     },
@@ -260,7 +314,14 @@ export default {
       const { account, password } = this;
       login({ account, password })
         .then(({ data }) => {
-          this.$store.commit("LOGIN", data.token, dayjs(data.expires_time));
+          let expires_time = data.expires_time.substring(0, 19);
+          expires_time = expires_time.replace(/-/g, "/");
+          expires_time = new Date(expires_time).getTime() - 28800000;
+          const datas = {
+            token: data.token,
+            expires_time: expires_time
+          };
+          this.$store.commit("LOGIN", datas);
           const backUrl = cookie.get(BACK_URL) || "/";
           cookie.remove(BACK_URL);
           this.$router.replace({ path: backUrl });
@@ -272,3 +333,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.code img {
+  width: 100%;
+  height: 100%;
+}
+</style>

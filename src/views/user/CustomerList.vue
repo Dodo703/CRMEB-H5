@@ -1,6 +1,6 @@
 <template>
   <div class="CustomerList">
-    <div
+    <!-- <div
       class="item acea-row row-between-wrapper"
       v-for="(item, index) in list"
       :key="index"
@@ -10,12 +10,29 @@
         {{ item }}</a
       >
       <span class="copy" :data-clipboard-text="item"> 复制</span>
+    </div> -->
+     <div
+      class="item acea-row row-between-wrapper"
+    >
+      联系客服(telegram):
+      <a class="money font-color-red" href="https://t.me/love124com6">
+        https://t.me/love124com6</a
+      >
+      <span class="copy" :data-clipboard-text="item"> 复制</span>
     </div>
     <!-- <div
       class="item acea-row row-between-wrapper"
       v-for="item in list"
       :key="item.id"
-      @click="$router.push('/customer/chat/' + item.uid)"
+      @click="
+        $router.push(
+          '/customer/chat/' +
+            item.uid +
+            '/' +
+            productId +
+            (orderId ? '?orderId=' + orderId : '')
+        )
+      "
     >
       <div class="pictrue"><img :src="item.avatar" /></div>
       <div class="text line1">{{ item.nickname }}</div>
@@ -30,8 +47,21 @@ export default {
   name: "CustomerList",
   data() {
     return {
-      list: ["@JieFuHuiZuoFan", "@luckywr", "@JieFuLooK", "@jsdodo"]
+      list: [],
+      productId: 0,
+      orderId: ""
     };
+  },
+  watch: {
+    $route(n) {
+      if (n.name === "CustomerList") {
+        if (n.params.productId) this.productId = n.params.productId;
+        else this.productId = 0;
+
+        if (n.query.orderId) this.orderId = n.query.orderId;
+        else this.orderId = "";
+      }
+    }
   },
   methods: {
     getList() {
@@ -41,7 +71,10 @@ export default {
     }
   },
   mounted() {
-    // this.getList();
+    this.getList();
+    if (this.$route.params.productId)
+      this.productId = this.$route.params.productId;
+    if (this.$route.query.orderId) this.orderId = this.$route.query.orderId;
     this.$nextTick(function() {
       let copybtn = document.getElementsByClassName("copy");
       const clipboard = new ClipboardJS(copybtn);

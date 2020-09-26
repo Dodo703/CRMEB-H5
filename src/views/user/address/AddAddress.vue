@@ -52,9 +52,10 @@
   </div>
 </template>
 <script type="text/babel">
-import District from "ydui-district/dist/jd_province_city_area_id";
+import { CitySelect } from "vue-ydui/dist/lib.rem/cityselect";
 import { getAddress, postAddress } from "@api/user";
-import { required } from "@utils/validate";
+import { getCity } from "@api/public";
+import attrs, { required, chs_phone } from "@utils/validate";
 import { validatorDefaultCatch } from "@utils/dialog";
 import { openAddress } from "@libs/wechat";
 import { isWeixin } from "@utils";
@@ -63,10 +64,13 @@ export default {
   data() {
     return {
       show2: false,
-      district: District,
+      model2: "",
+      district: [],
       id: 0,
       userAddress: { is_default: 0 },
-      isWechat: isWeixin()
+      address: {},
+      isWechat: isWeixin(),
+      ready: false
     };
   },
   mounted: function() {
@@ -74,8 +78,20 @@ export default {
     this.id = id;
     document.title = !id ? "添加地址" : "修改地址";
     this.getUserAddress();
+    this.getCityList();
   },
   methods: {
+    getCityList: function() {
+      let that = this;
+      getCity()
+        .then(res => {
+          that.district = res.data;
+          that.ready = true;
+        })
+        .catch(err => {
+          that.$dialog.error(err.msg);
+        });
+    },
     getUserAddress: function() {
       if (!this.id) return false;
       let that = this;
@@ -92,7 +108,8 @@ export default {
           phone: userInfo.telNumber,
           detail: userInfo.detailInfo,
           is_default: 1,
-          post_code: userInfo.postalCode
+          post_code: userInfo.postalCode,
+          type: 1
         })
           .then(() => {
             this.$dialog.loading.close();
@@ -129,11 +146,15 @@ export default {
             is_default: isDefault,
             post_code: ""
           };
-        postAddress(data).then(function() {
-          if (that.id) that.$dialog.toast({ mes: "修改成功" });
-          else that.$dialog.toast({ mes: "添加成功" });
-          that.$router.go(-1);
-        });
+        postAddress(data)
+          .then(function() {
+            if (that.id) that.$dialog.toast({ mes: "修改成功" });
+            else that.$dialog.toast({ mes: "添加成功" });
+            that.$router.go(-1);
+          })
+          .catch(err => {
+            that.$dialog.error(err.msg);
+          });
       } catch (e) {
         this.$dialog.error(e.msg);
       }

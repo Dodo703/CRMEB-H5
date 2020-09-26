@@ -40,12 +40,14 @@ export default {
   props: {},
   data: function() {
     return {
+      top: "",
       bottom: ""
     };
   },
   computed: mapGetters(["homeActive"]),
   methods: {
     touchmove(event) {
+      this.bottom = "auto";
       event.preventDefault();
       let bottom =
         document.body.clientHeight -
@@ -62,7 +64,16 @@ export default {
         ? this.$store.commit("CLOSE_HOME")
         : this.$store.commit("OPEN_HOME");
     }
+  },
+  created() {
+    this.bottom = "50px";
   }
 };
 </script>
-<style scoped></style>
+
+<style scoped>
+.pictrueBox {
+  width: 1.3rem;
+  height: 1.2rem;
+}
+</style>
