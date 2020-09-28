@@ -157,7 +157,7 @@
             </div>
           </template> -->
           <template>
-            <a href="https://t.me/love124com8">
+            <a href="https://t.me/love124com8" target="_blank">
               联系客服在线付款:<span class="money font-color-red"
                 >情趣用品love124com</span
               >
