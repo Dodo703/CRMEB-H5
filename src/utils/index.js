@@ -38,9 +38,10 @@ export function parseQuery() {
   return res;
 }
 
-const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `${location.origin}/api`;
+// const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `${location.origin}/api`;
 // const VUE_APP_API_URL = 'http://47.106.86.164/api';
 // const VUE_APP_API_URL = "http://10.211.55.3:9090/api";
+const VUE_APP_API_URL = "http://www.love124.com/api";
 
 const VUE_APP_WS_URL =
   process.env.VUE_APP_WS_URL || `ws:${location.hostname}:20003`;

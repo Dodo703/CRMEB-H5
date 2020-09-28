@@ -158,6 +158,7 @@ import { getUser, getMenuUser, getLogout } from "@api/user";
 import { isWeixin } from "@utils";
 import SwitchWindow from "@components/SwitchWindow";
 import GeneralWindow from "@components/GeneralWindow";
+import { clearAuthStatus } from "@libs/wechat";
 const NAME = "User";
 
 export default {
@@ -237,6 +238,23 @@ export default {
     },
     closeGeneralWindow(msg) {
       this.generalActive = msg;
+    },
+    logout: function() {
+      this.$dialog.confirm({
+        mes: "确认退出登录?",
+        opts: () => {
+          getLogout()
+            .then(res => {
+              this.$store.commit("LOGOUT");
+              clearAuthStatus();
+              location.href = location.origin;
+              console.log(res);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      });
     }
   }
 };

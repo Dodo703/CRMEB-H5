@@ -154,10 +154,12 @@
           <template v-if="order._status._type === 0">
             <div class="bnt bg-color-red" @click="paymentTap(order)">
               立即付款
-            </div>  -->
-            <a href="tg://resolve?domain=@JieFuHuiZuoFan">
+            </div>
+          </template> -->
+          <template>
+            <a href="https://t.me/love124com8">
               联系客服在线付款:<span class="money font-color-red"
-                >@JieFuHuiZuoFan</span
+                >情趣用品love124com</span
               >
             </a>
           </template>
