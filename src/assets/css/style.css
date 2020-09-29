@@ -234,7 +234,7 @@ body{font-size:0.28rem;background-color:#f5f5f5;transition: background-color .3s
     font-size:0.28rem;color:#bbb;}
 .index .header  .search .iconfont{font-size:0.34rem;margin-right:0.16rem;}
 .index .banner{height:3.75rem;}
-.index .banner img{width:100%;height:100%;}
+.index .banner img{width:100%;height:100%;object-fit: contain;}
 .index .banner .swiper-pagination{bottom:0.07rem;}
 .index .banner .swiper-pagination-bullet{width:0.2rem;height:0.04rem;border-radius:0.03rem;
     background-color:#fff;opacity:0.6;}
@@ -282,7 +282,7 @@ body{font-size:0.28rem;background-color:#f5f5f5;transition: background-color .3s
 .index .wrapper .scroll-product .swiper-slide .pro-info{font-size:0.24rem;color:#282828;text-align:center;height:0.6rem;
     line-height:0.6rem;border:1px solid #f5f5f5;border-bottom:0;border-top:0;padding:0 0.1rem;}.index .wrapper .boutique{width:6.9rem;height:2.9rem;margin:0.28rem auto 0 auto;}
 .index .wrapper .boutique{width:6.9rem;height:2.9rem;margin:0.28rem auto 0 auto;}
-.index .wrapper .boutique img{width:100%;height:2.6rem;object-fit: cover;}
+.index .wrapper .boutique img{width:100%;height:2.6rem;object-fit: contain;}
 .index .wrapper .boutique .swiper-pagination{bottom:-0.08rem;width:100%;}
 .index .wrapper .boutique .swiper-pagination-bullet{width:0.07rem;height:0.07rem;border-radius:50%;
     background-color:#fc4141;opacity:0.3;}
@@ -467,7 +467,7 @@ top:50%;margin-top:-0.35rem;}
 .product-con .product-intro .title{font-size:0.3rem;color:#282828;height:0.86rem;width:100%;background-color:#fff;
     text-align:center;line-height:0.86rem;}
 .product-con .product-intro .conter{width:100%;overflow: hidden;}
-.product-con .product-intro .conter img{width:7.5rem!important;display:block!important;}
+.product-con .product-intro .conter img{width:7.5rem!important;display:block!important;height: auto;}
 /*产品详情*/
 .product-con .footer{padding:0 0.2rem 0 0.3rem;position:fixed;max-width:7.5rem;margin: 0 auto;bottom:0;width:100%;height:1rem;background-color:#fff;
     z-index:99;border-top:1px solid #f0f0f0;}
