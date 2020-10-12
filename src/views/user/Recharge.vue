@@ -3,7 +3,7 @@
     <div class="payment-top acea-row row-column row-center-wrapper">
       <span class="name">我的余额</span>
       <div class="pic">
-        ￥<span class="pic-font">{{ now_money || 0 }}</span>
+        ₱<span class="pic-font">{{ now_money || 0 }}</span>
       </div>
     </div>
     <div class="recharge">

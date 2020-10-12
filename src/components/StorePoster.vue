@@ -111,7 +111,7 @@ export default {
         textY = initHeight + 85;
       }
       ctx.textAlign = "center";
-      ctx.fillText("￥" + this.posterData.price, W / 2, textY);
+      ctx.fillText("₱" + this.posterData.price, W / 2, textY);
 
       var screamsCode = new Image();
       let codeY = textY + 20;

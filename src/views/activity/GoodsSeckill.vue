@@ -57,7 +57,7 @@
                   v-text="'₱' + itemSeckill.price"
                 ></span>
                 <span
-                  v-text="'￥' + itemSeckill.ot_price"
+                  v-text="'₱' + itemSeckill.ot_price"
                   class="ot_price"
                 ></span>
               </div>

@@ -12,9 +12,9 @@
           ></div>
           <div class="acea-row row-between">
             <div class="broadcast_details_pic">
-              ￥{{ productInfo.price
+              ₱{{ productInfo.price
               }}<span class="broadcast_details_pic_num"
-                >￥{{ productInfo.ot_price }}</span
+                >₱{{ productInfo.ot_price }}</span
               >
             </div>
             <div class="broadcast_details_btn" @click="sendProduct">
@@ -41,9 +41,9 @@
             </div>
             <div class="acea-row row-between">
               <div class="broadcast_details_pic">
-                ￥{{ cartInfo.productInfo.price
+                ₱{{ cartInfo.productInfo.price
                 }}<span class="broadcast_details_pic_num"
-                  >￥{{ cartInfo.productInfo.ot_price }}</span
+                  >₱{{ cartInfo.productInfo.ot_price }}</span
                 >
               </div>
               <div class="broadcast_details_btn" @click="sendOrder">
@@ -102,7 +102,7 @@
                           v-text="val.productInfo.store_name"
                         ></div>
                         <div class="broadcast_details_pic">
-                          ￥{{ val.productInfo.price }}
+                          ₱{{ val.productInfo.price }}
                         </div>
                       </div>
                     </router-link>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="broadcast_details_picBox_no noPad">
                       <div class="broadcast_details_pic">
-                        ￥{{ item.productInfo.price }}
+                        ₱{{ item.productInfo.price }}
                       </div>
                       <div
                         class="broadcast_details_tit_no"
@@ -209,7 +209,7 @@
                           v-text="val.productInfo.store_name"
                         ></div>
                         <div class="broadcast_details_pic">
-                          ￥{{ val.productInfo.price }}
+                          ₱{{ val.productInfo.price }}
                         </div>
                       </div>
                     </div>
@@ -233,7 +233,7 @@
                     </div>
                     <div class="broadcast_details_picBox_no noPad">
                       <div class="broadcast_details_pic">
-                        ￥{{ item.productInfo.price }}
+                        ₱{{ item.productInfo.price }}
                       </div>
                       <div
                         class="broadcast_details_tit_no"

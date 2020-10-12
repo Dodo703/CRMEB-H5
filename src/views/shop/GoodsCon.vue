@@ -27,11 +27,11 @@
       <div class="wrapper">
         <div class="share acea-row row-between row-bottom">
           <div class="money font-color-red">
-            ￥<span class="num">{{ storeInfo.price }}</span
+            ₱<span class="num">{{ storeInfo.price }}</span
             ><span
               class="vip-money"
               v-if="storeInfo.vip_price && storeInfo.vip_price > 0"
-              >￥{{ storeInfo.vip_price }}</span
+              >₱{{ storeInfo.vip_price }}</span
             ><img
               src="@assets/images/vip.png"
               class="image"
@@ -45,7 +45,7 @@
         </div>
         <div class="introduce">{{ storeInfo.store_name }}</div>
         <div class="label acea-row row-between-wrapper">
-          <div>原价:￥{{ storeInfo.ot_price }}</div>
+          <div>原价:₱{{ storeInfo.ot_price }}</div>
           <div>库存:{{ storeInfo.stock }}{{ storeInfo.unit_name }}</div>
           <div>销量:{{ storeInfo.fsales }}{{ storeInfo.unit_name }}</div>
         </div>
