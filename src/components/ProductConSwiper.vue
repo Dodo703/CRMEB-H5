@@ -145,7 +145,7 @@ export default {
   position: fixed;
   z-index: 999;
   top: 0;
-  width: 100%;
+  width: 7.5rem;
   height: 100%;
 }
 
